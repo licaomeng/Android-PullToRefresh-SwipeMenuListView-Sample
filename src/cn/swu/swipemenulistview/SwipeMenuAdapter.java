@@ -12,12 +12,6 @@ import cn.swu.pulltorefreshswipemenulistviewsample.PullToRefreshSwipeMenuListVie
 import cn.swu.pulltorefreshswipemenulistviewsample.PullToRefreshSwipeMenuListView.OnMenuItemClickListener;
 import cn.swu.swipemenulistview.SwipeMenuView.OnSwipeItemClickListener;
 
-/**
- * 
- * @author licaomeng
- * @date 2015-7-14
- *
- */
 public class SwipeMenuAdapter implements WrapperListAdapter,
 		OnSwipeItemClickListener {
 
