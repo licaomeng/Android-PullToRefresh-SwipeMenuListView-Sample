@@ -1,6 +1,7 @@
 package cn.swu.pulltorefreshswipemenulistviewsample;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
@@ -243,6 +244,7 @@ public class PullToRefreshSwipeMenuListView extends ListView implements OnScroll
             if (mEnablePullLoad && mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA) {
                 startLoadMore();
                 resetFooterHeight();
+                new ResetHeaderHeightTask().execute();
             } else if (getFirstVisiblePosition() == 0) {
                 // invoke refresh
                 if (mEnablePullRefresh && mHeaderView.getVisiableHeight() > mHeaderViewHeight) {
@@ -273,6 +275,24 @@ public class PullToRefreshSwipeMenuListView extends ListView implements OnScroll
             break;
         }
         return super.onTouchEvent(ev);
+    }
+
+    class ResetHeaderHeightTask extends AsyncTask<Void, Void, Void> {
+        protected Void doInBackground(Void... params) {
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        protected void onPostExecute(Void result) {
+            mPullRefreshing = false;
+            mHeaderView.setState(PullToRefreshListHeader.STATE_NORMAL);
+            resetHeaderHeight();
+
+        }
     }
 
     public void smoothOpenMenu(int position) {
