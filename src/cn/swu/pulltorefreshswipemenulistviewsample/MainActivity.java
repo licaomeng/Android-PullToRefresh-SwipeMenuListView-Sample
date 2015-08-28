@@ -138,7 +138,7 @@ public class MainActivity extends Activity implements IXListViewListener {
 
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), position + " long click", 0).show();
+                Toast.makeText(getApplicationContext(), position + " long click", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
@@ -159,7 +159,6 @@ public class MainActivity extends Activity implements IXListViewListener {
             public void run() {
                 SimpleDateFormat df = new SimpleDateFormat("MM-dd HH:mm", Locale.getDefault());
                 RefreshTime.setRefreshTime(getApplicationContext(), df.format(new Date()));
-                Log.i("1111111111111111111111", "Hello World!");
                 onLoad();
             }
         }, 2000);
@@ -169,7 +168,6 @@ public class MainActivity extends Activity implements IXListViewListener {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Log.i("2222222222222222222222222", "Hello World!");
                 onLoad();
             }
         }, 2000);
