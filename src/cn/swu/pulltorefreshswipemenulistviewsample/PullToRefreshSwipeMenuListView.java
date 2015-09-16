@@ -18,7 +18,6 @@ import android.widget.Scroller;
 import android.widget.TextView;
 import cn.swu.pulltorefresh.PullToRefreshListFooter;
 import cn.swu.pulltorefresh.PullToRefreshListHeader;
-import cn.swu.pulltorefreshswipemenulistviewsample.R;
 import cn.swu.swipemenulistview.SwipeMenu;
 import cn.swu.swipemenulistview.SwipeMenuAdapter;
 import cn.swu.swipemenulistview.SwipeMenuCreator;
@@ -209,13 +208,15 @@ public class PullToRefreshSwipeMenuListView extends ListView implements OnScroll
         case MotionEvent.ACTION_MOVE:
             final float deltaY = ev.getRawY() - mLastY;
             mLastY = ev.getRawY();
-            if ((mFooterView.getBottomMargin() > 0 || deltaY < 0)) {
-                // last item, already pulled up or want to pull up.
-                updateFooterHeight(-deltaY / OFFSET_RADIO);
-            } else if (getFirstVisiblePosition() == 0 && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
-                // the first item is showing, header has shown or pull down.
-                updateHeaderHeight(deltaY / OFFSET_RADIO);
-                invokeOnScrolling();
+            if (mTouchView == null || !mTouchView.isActive()) {
+                if ((mFooterView.getBottomMargin() > 0 || deltaY < 0)) {
+                    // last item, already pulled up or want to pull up.
+                    updateFooterHeight(-deltaY / OFFSET_RADIO);
+                } else if (getFirstVisiblePosition() == 0 && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
+                    // the first item is showing, header has shown or pull down.
+                    updateHeaderHeight(deltaY / OFFSET_RADIO);
+                    invokeOnScrolling();
+                }
             }
 
             float dy = Math.abs((ev.getY() - mDownY));

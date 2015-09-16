@@ -159,6 +159,15 @@ public class SwipeMenuLayout extends FrameLayout {
         return state == STATE_OPEN;
     }
 
+    public boolean isActive() {
+        if (mContentView != null) {
+            if (mContentView.getLeft() != 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         return super.onTouchEvent(event);
