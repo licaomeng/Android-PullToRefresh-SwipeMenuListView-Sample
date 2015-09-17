@@ -3,6 +3,7 @@ package cn.swu.pulltorefreshswipemenulistviewsample;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -204,18 +205,19 @@ public class PullToRefreshSwipeMenuListView extends ListView implements OnScroll
             if (mTouchView != null) {
                 mTouchView.onSwipe(ev);
             }
+
             break;
         case MotionEvent.ACTION_MOVE:
             final float deltaY = ev.getRawY() - mLastY;
             mLastY = ev.getRawY();
             if (mTouchView == null || !mTouchView.isActive()) {
-                if ((mFooterView.getBottomMargin() > 0 || deltaY < 0)) {
-                    // last item, already pulled up or want to pull up.
-                    updateFooterHeight(-deltaY / OFFSET_RADIO);
-                } else if (getFirstVisiblePosition() == 0 && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
+                if (getFirstVisiblePosition() == 0 && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
                     // the first item is showing, header has shown or pull down.
                     updateHeaderHeight(deltaY / OFFSET_RADIO);
                     invokeOnScrolling();
+                } else if ((mFooterView.getBottomMargin() > 0 || deltaY < 0)) {
+                    // last item, already pulled up or want to pull up.
+                    updateFooterHeight(-deltaY / OFFSET_RADIO);
                 }
             }
 

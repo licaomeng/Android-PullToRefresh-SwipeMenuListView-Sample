@@ -161,9 +161,7 @@ public class SwipeMenuLayout extends FrameLayout {
 
     public boolean isActive() {
         if (mContentView != null) {
-            if (mContentView.getLeft() != 0) {
-                return true;
-            }
+            return mContentView.getLeft() != 0;
         }
         return false;
     }
