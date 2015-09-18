@@ -209,8 +209,12 @@ public class PullToRefreshSwipeMenuListView extends ListView implements OnScroll
             break;
         case MotionEvent.ACTION_MOVE:
             final float deltaY = ev.getRawY() - mLastY;
+
+            float dy = Math.abs((ev.getY() - mDownY));
+            float dx = Math.abs((ev.getX() - mDownX));
             mLastY = ev.getRawY();
-            if (mTouchView == null || !mTouchView.isActive()) {
+
+            if ((mTouchView == null || !mTouchView.isActive()) && Math.pow(dx, 2) / Math.pow(dy, 2) <= 3) {
                 if (getFirstVisiblePosition() == 0 && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
                     // the first item is showing, header has shown or pull down.
                     updateHeaderHeight(deltaY / OFFSET_RADIO);
@@ -221,8 +225,6 @@ public class PullToRefreshSwipeMenuListView extends ListView implements OnScroll
                 }
             }
 
-            float dy = Math.abs((ev.getY() - mDownY));
-            float dx = Math.abs((ev.getX() - mDownX));
             if (mTouchState == TOUCH_STATE_X) {
                 if (mTouchView != null) {
                     mTouchView.onSwipe(ev);
