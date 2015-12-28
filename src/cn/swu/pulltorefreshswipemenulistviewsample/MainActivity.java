@@ -15,7 +15,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,12 +32,6 @@ import cn.swu.swipemenulistview.SwipeMenu;
 import cn.swu.swipemenulistview.SwipeMenuCreator;
 import cn.swu.swipemenulistview.SwipeMenuItem;
 
-/**
- * 
- * @author licaomeng
- * @date Jul 14, 2015
- * @blog http://blog.csdn.net/licaomengrice
- */
 public class MainActivity extends Activity implements IXListViewListener {
 
     private List<ApplicationInfo> mAppList;
