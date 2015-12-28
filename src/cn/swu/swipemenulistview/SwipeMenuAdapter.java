@@ -13,7 +13,7 @@ import cn.swu.pulltorefreshswipemenulistviewsample.PullToRefreshSwipeMenuListVie
 import cn.swu.swipemenulistview.SwipeMenuView.OnSwipeItemClickListener;
 
 public class SwipeMenuAdapter implements WrapperListAdapter, OnSwipeItemClickListener {
-
+	
 	private ListAdapter mAdapter;
 	private Context mContext;
 	private OnMenuItemClickListener onMenuItemClickListener;

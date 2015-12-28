@@ -89,7 +89,7 @@ public class PullToRefreshSwipeMenuListView extends ListView implements OnScroll
 		super(context, attrs);
 		init(context);
 	}
-
+	
 	private void init(Context context) {
 		mScroller = new Scroller(context, new DecelerateInterpolator());
 		super.setOnScrollListener(this);
