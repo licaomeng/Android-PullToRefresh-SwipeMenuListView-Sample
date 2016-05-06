@@ -197,4 +197,5 @@ public class MainActivity extends Activity implements IXListViewListener {
     private int dp2px(int dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
     }
+    
 }
