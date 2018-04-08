@@ -1,7 +1,7 @@
 # Android-PullToRefresh-SwipeMenuListView-Sample
 An Android sample integrates PullToRefresh with SwipeMenuListView
-##Blog
-####[http://blog.csdn.net/licaomengrice/article/details/46928381](http://blog.csdn.net/licaomengrice/article/details/46928381)
+## Blog
+#### [http://blog.csdn.net/licaomengrice/article/details/46928381](http://blog.csdn.net/licaomengrice/article/details/46928381)
 
 ##Demo gif
 ![](https://github.com/licaomeng/Android-PullToRefresh-SwipeMenuListView-Sample/blob/master/demo.gif)
